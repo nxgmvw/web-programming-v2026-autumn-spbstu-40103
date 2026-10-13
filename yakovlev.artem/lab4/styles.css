@@ -22,7 +22,7 @@ body {
   font-family:
     system-ui,
     -apple-system,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
     sans-serif;
   color: var(--color-text);
@@ -134,7 +134,7 @@ body {
   color: var(--color-muted);
 }
 
-.status[data-state='error'] {
+.status[data-state="error"] {
   color: var(--color-danger);
 }
 

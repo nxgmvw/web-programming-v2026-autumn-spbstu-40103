@@ -31,16 +31,16 @@ export class User {
 }
 
 export function groupUsersByFriendCount(users) {
-  const groups = {};
+  const groups = new Map();
 
   for (const user of users) {
     const count = user.friends.length;
 
-    if (!(count in groups)) {
-      groups[count] = [];
+    if (!groups.has(count)) {
+      groups.set(count, []);
     }
 
-    groups[count].push(user);
+    groups.get(count).push(user);
   }
 
   return groups;
