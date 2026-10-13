@@ -1,4 +1,4 @@
-export default function BookCard({ book, onOpen }) {
+export default function BookCard({book, onOpen}) {
   return (
     <button
       className="book-card"

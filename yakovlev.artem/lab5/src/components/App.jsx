@@ -1,7 +1,7 @@
-import { useCallback, useState } from "react";
-import BookCard from "./components/BookCard.jsx";
-import Modal from "./components/Modal.jsx";
-import { books } from "./data/books.js";
+import {useCallback, useState} from 'react';
+import BookCard from './components/BookCard.jsx';
+import Modal from './components/Modal.jsx';
+import {books} from './data/books.js';
 
 export default function App() {
   const [selectedBook, setSelectedBook] = useState(null);
@@ -18,7 +18,7 @@ export default function App() {
           </li>
         ))}
       </ul>
-      {selectedBook && <Modal book={selectedBook} onClose={closeModal} />}
+      <Modal book={selectedBook} onClose={closeModal} />
     </>
   );
 }

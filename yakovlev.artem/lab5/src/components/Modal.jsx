@@ -1,29 +1,33 @@
-import { useEffect, useId, useRef } from "react";
+import {useEffect, useId, useRef} from 'react';
 
-export default function Modal({ book, onClose }) {
+export default function Modal({book, onClose}) {
   const titleId = useId();
   const closeButtonRef = useRef(null);
 
   useEffect(() => {
+    if (!book) {
+      return undefined;
+    }
+
     const previouslyFocused = document.activeElement;
 
     closeButtonRef.current.focus();
-    document.body.classList.add("modal-open");
+    document.body.classList.add('modal-open');
 
     function handleKeyDown(event) {
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         onClose();
       }
     }
 
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.classList.remove("modal-open");
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.classList.remove('modal-open');
       previouslyFocused?.focus?.();
     };
-  }, [onClose]);
+  }, [book, onClose]);
 
   function handleOverlayClick(event) {
     if (event.target === event.currentTarget) {
@@ -35,6 +39,7 @@ export default function Modal({ book, onClose }) {
     <div
       className="modal-overlay"
       data-testid="modal-overlay"
+      hidden={!book}
       onClick={handleOverlayClick}
     >
       <div
@@ -42,7 +47,7 @@ export default function Modal({ book, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        data-testid="modal"
+        data-testid="book-modal"
       >
         <button
           className="modal-close"
@@ -54,24 +59,32 @@ export default function Modal({ book, onClose }) {
         >
           ×
         </button>
-        <img
-          className="modal-cover"
-          src={book.cover}
-          alt={`Обложка книги «${book.title}»`}
-          width="300"
-          height="420"
-        />
-        <div className="modal-body">
-          <h2 className="modal-title" id={titleId} data-testid="modal-title">
-            {book.title}
-          </h2>
-          <p className="modal-meta" data-testid="modal-author">
-            {book.author}, {book.year}
-          </p>
-          <p className="modal-description" data-testid="modal-description">
-            {book.description}
-          </p>
-        </div>
+        {book && (
+          <>
+            <img
+              className="modal-cover"
+              src={book.cover}
+              alt={`Обложка книги «${book.title}»`}
+              width="300"
+              height="420"
+            />
+            <div className="modal-body">
+              <h2
+                className="modal-title"
+                id={titleId}
+                data-testid="modal-title"
+              >
+                {book.title}
+              </h2>
+              <p className="modal-meta" data-testid="modal-author">
+                {book.author}, {book.year}
+              </p>
+              <p className="modal-description" data-testid="modal-description">
+                {book.description}
+              </p>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

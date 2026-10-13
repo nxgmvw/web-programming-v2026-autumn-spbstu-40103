@@ -19,7 +19,7 @@ body {
   font-family:
     system-ui,
     -apple-system,
-    "Segoe UI",
+    'Segoe UI',
     Roboto,
     sans-serif;
   color: var(--color-text);
@@ -70,7 +70,7 @@ body {
 }
 
 .book-card:hover {
-  box-shadow: 0 6px 18px rgb(31 36 48 / 15%);
+  box-shadow: 0 6px 18px rgb(31 36 48 / 0.15);
   transform: translateY(-3px);
 }
 
@@ -100,7 +100,11 @@ body {
   justify-content: center;
   padding: 16px;
   overflow-y: auto;
-  background-color: rgb(15 18 25 / 60%);
+  background-color: rgb(15 18 25 / 0.6);
+}
+
+.modal-overlay[hidden] {
+  display: none;
 }
 
 .modal {
@@ -112,7 +116,7 @@ body {
   padding: 24px;
   background-color: var(--color-surface);
   border-radius: var(--radius);
-  box-shadow: 0 20px 50px rgb(0 0 0 / 30%);
+  box-shadow: 0 20px 50px rgb(0 0 0 / 0.3);
 }
 
 .modal-close {
