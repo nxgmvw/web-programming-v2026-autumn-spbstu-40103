@@ -1,4 +1,4 @@
-import {User, getUniqueFriends, getUsersWithoutFriends} from './model.js';
+import {User, getUniqueFriends, findUsersWithoutFriends} from './model.js';
 
 const STORAGE_KEY = 'lab4-users';
 const OPERATION_DELAY_MS = 300;
@@ -270,7 +270,7 @@ function render() {
   summary.hidden = users.length === 0;
   summary.textContent =
     `Всего пользователей: ${users.length} · ` +
-    `без друзей: ${getUsersWithoutFriends(users).length} · ` +
+    `без друзей: ${findUsersWithoutFriends(users).length} · ` +
     `уникальных друзей: ${getUniqueFriends(users).length}`;
 }
 

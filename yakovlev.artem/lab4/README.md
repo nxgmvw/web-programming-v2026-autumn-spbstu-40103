@@ -27,9 +27,9 @@
 - `getUniqueFriends(users)` — массив уникальных id друзей;
 - `findUsersWithFriend(users, friendId)` — пользователи, у которых в друзьях
   есть пользователь с id `friendId`;
-- `getUsersWithMoreFriendsThan(users, count)` — пользователи, у которых друзей
+- `findUsersAboveFriendCount(users, count)` — пользователи, у которых друзей
   больше `count`;
-- `getUsersWithoutFriends(users)` — пользователи без друзей.
+- `findUsersWithoutFriends(users)` — пользователи без друзей.
 
 Функции не изменяют входной массив. `addFriend` не добавляет один и тот же id
 дважды.
