@@ -50,20 +50,8 @@ export function getUniqueFriends(users) {
   return [...new Set(users.flatMap((user) => user.friends))];
 }
 
-export function getUsersWithCommonFriend(users, userId) {
-  const target = users.find((user) => user.id === userId);
-
-  if (!target) {
-    return [];
-  }
-
-  const targetFriends = new Set(target.friends);
-
-  return users.filter(
-    (user) =>
-      user.id !== userId &&
-      user.friends.some((friendId) => targetFriends.has(friendId)),
-  );
+export function findUsersWithFriend(users, friendId) {
+  return users.filter((user) => user.friends.includes(friendId));
 }
 
 export function getUsersWithMoreFriendsThan(users, count) {
